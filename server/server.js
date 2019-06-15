@@ -10,10 +10,19 @@ var io=socket(server);
 app.use(express.static(reqPath));
 io.on("connection",(socket)=>{
  console.log('New user connected');
+ 
+ socket.on('createMessage',(message)=>{
+  
+  io.emit('newMessage',{
+    from:message.from,
+    text:message.text
+ });
+ });
  socket.on('disconnect',()=>{
   console.log('New user disconnected');
  });
 });
+
 
 server.listen(port,()=>{
   console.log(`System is on port  ${port}`);
