@@ -8,6 +8,7 @@ const express=require('express');
 var server=http.createServer(app);
 var io=socket.listen(server);
 app.use(express.static(reqPath));
+
 io.on("connection",function(socket){
  console.log('New user connected');
  
