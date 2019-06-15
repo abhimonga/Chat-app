@@ -6,7 +6,7 @@ const port=process.env.PORT||3000;
 const express=require('express');
   var app=express();
 var server=http.createServer(app);
-var io=socket(server);
+var io=socket.listen(server);
 app.use(express.static(reqPath));
 io.on("connection",function(socket){
  console.log('New user connected');
