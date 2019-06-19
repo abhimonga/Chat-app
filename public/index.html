@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <head>
+            <meta charset="utf-8">
             <title>Web Chat</title>
-          
-        </head>
+          <link rel="stylesheet" href="css/styles.css">
+        
     </head>
-    <body>
-        <p>Welcome to my Chat app</p>
-        <ul id="m"></ul>
+    <body class="chat" >
+        
+        <div class="chat__main">
+        <ol id="m"  class="chat__messages"></ol>
+      <div class="chat__footer">
         <form id="message-form">
             <input id="user" name="user" type="text" placeholder="Name"/>
-            <input id="text" name="text" type="text" placeholder="Enter text here"/>
+            <input id="text" name="text" type="text" placeholder="Enter text here" autofocus="true"/>
             <button id="submit">Submit</button>
         </form>
+    </div>
+  
+    </div>
+   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"> </script>
     <script src="js/index.js"></script>
+    <script src="js/moment.js"></script>
     </body>
 </html>

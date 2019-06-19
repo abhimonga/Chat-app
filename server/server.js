@@ -21,7 +21,8 @@ io.on("connection",function(socket){
   
   io.emit('newMessage',{
     from:message.from,
-    text:message.text
+    text:message.text,
+    createdAt:message.createdAt
  });
  });
  socket.on('disconnect',()=>{

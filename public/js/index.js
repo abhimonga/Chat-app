@@ -7,10 +7,14 @@ socket.on('disconnect',function(){
    console.log('server is down');
 });
 socket.on('newMessage',function(message){
-   console.log(' New Email arrived',message);
+  var formattedtime=moment(message.createdAt).format('h:mm a');
    var li=jQuery('<li></li>');
-    li.text(`${message.from} : ${message.text}`);
-    jQuery('#m').append(li);
+   if(!(message.from)||!(message.text)){
+      alert("Invalid Input");
+   }
+   else{
+    li.text(`${message.from} at ${formattedtime} : ${message.text}`);
+    jQuery('#m').append(li);}
 });
 jQuery('#message-form').on('submit',function(e){
      e.preventDefault();
