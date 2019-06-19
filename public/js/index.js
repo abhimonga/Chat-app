@@ -1,4 +1,5 @@
 var socket=io();
+
 socket.on('connect',function(){
    console.log('server is up');
    
@@ -8,13 +9,20 @@ socket.on('disconnect',function(){
 });
 socket.on('newMessage',function(message){
   var formattedtime=moment(message.createdAt).format('h:mm a');
-   var li=jQuery('<li></li>');
+  
    if(!(message.from)||!(message.text)){
       alert("Invalid Input");
    }
    else{
-    li.text(`${message.from} at ${formattedtime} : ${message.text}`);
-    jQuery('#m').append(li);}
+      var template=jQuery('#temp').html();
+      var html=Mustache.render(template,{
+             from:message.from,
+             text:message.text,
+             createdAt:formattedtime
+      });
+      jQuery('#m').append(html);
+    }
+
 });
 jQuery('#message-form').on('submit',function(e){
      e.preventDefault();
