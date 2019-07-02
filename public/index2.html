@@ -1,42 +1,54 @@
 <!DOCTYPE html>
+
 <html>
-    <head>
-            <meta charset="utf-8">
-            <title>Web Chat</title>
-          <link rel="stylesheet" href="css/styles.css">
-        
-    </head>
-    <body class="chat"  >
-        <div class="chat__sidebar" id="use" style="visibility">
-            <h3>People</h3>
-            <div id="users"></div>
-          </div>
-        <div class="chat__main">
-        <ol id="m"  class="chat__messages"></ol>
-      <div class="chat__footer">
-        <form id="message-form">
-            <input id="user" name="user" type="text" placeholder="Name"/>
-            <input id="text" name="text" type="text" placeholder="Enter text here" autofocus="true"/>
-            <button id="submit">Submit</button>
-        </form>
+
+<head>
+    <meta charset="utf-8">
+    <title>Web Chat</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body class="chat">
+    <div class="chat__sidebar" id="use" style="visibility: visible">
+        <h3>People</h3>
+        <div id="users"></div>
+
     </div>
-  
+    <div class="chat__main">
+        <ol id="m" class="chat__messages"></ol>
+        <div class="chat__footer">
+            <form id="message-form">
+                <input id="user" name="user" type="text" placeholder="Name" />
+                <input id="text" name="text" type="text" placeholder="Enter text here" autofocus="true" />
+                <button id="sub">Submit</button>
+                <button id="gif" onclick="x()">SEND GIF</button>
+            </form>
+        </div>
+
     </div>
     <script id="message-template" type="text/template">
         <li class="message">
             <div class="message__title">
                 <h4>{{from}}</h4>
                 <span>{{createdAt}}</span></div>
-             <div class="message__body">
-                 <p>{{text}}</p>
-             </div>   
+            <div class="message__body">
+                <p>{{text}}</p>
+            </div>
+
     </script>
-   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="/socket.io/socket.io.js"> </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js">
+    </script>
     <script src="js/index2.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/mustache.js"></script>
     <script src="js/deparam.js"></script>
-    </body>
+    <script src="js/gifshot.js"></script>
+
+
+</body>
+
 </html>
