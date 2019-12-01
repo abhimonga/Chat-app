@@ -51,9 +51,7 @@ function x() {
             var image = obj.image,
                 animatedImage = document.createElement('img');
             animatedImage.src = image;
-
-            document.body.setAttribute("style", "margin-left:100px;");
-            document.body.appendChild(animatedImage);
+            $("#message-template").append(animatedImage);
         }
     });
 }

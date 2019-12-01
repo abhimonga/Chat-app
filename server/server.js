@@ -14,20 +14,19 @@ var server = http.createServer(app);
 var io = socket.listen(server);
 var user = new Users();
 app.use(express.static(reqPath));
+console.log(reqPath);
 
 io.on("connection", function(socket) {
     console.log('New user connected');
 
     socket.on('join', (params, callback) => {
-        if (!isValid(params.name) || !isValid(params.room)) {
-            return callback('Enter Valid name and room name');
-        }
+
         socket.join(params.room);
         user.removeUser(socket.id);
         user.addUser(socket.id, params.name, params.room);
-        io.to(params.room).emit('updated list', user.getUserList(params.room));
-        socket.emit('newMessage', message('admin', 'Welcome to new chat'));
-        io.to(user.room).emit('newMessage', message("admin", "New user joined"));
+        // io.to(params.room).emit('updated list', user.getUserList(params.room));
+        // socket.emit('newMessage', message('admin', 'Welcome to new chat'));
+        // io.to(user.room).emit('newMessage', message("admin", "New user joined"));
 
     });
 
@@ -42,13 +41,13 @@ io.on("connection", function(socket) {
         }
 
     });
-    socket.on('disconnect', () => {
-        var users = user.removeUser(socket.id);
-        if (users) {
-            io.emit('updated list', user.getUserList(user.room));
-            io.to(users.room).emit('newMessage', message("admin", `${users.name} has left`));
-        }
-    });
+    // socket.on('disconnect', () => {
+    //     var users = user.removeUser(socket.id);
+    //     if (users) {
+    //         io.emit('updated list', user.getUserList(user.room));
+    //         io.to(users.room).emit('newMessage', message("admin", `${users.name} has left`));
+    //     }
+    // });
 });
 
 server.listen(port, () => {

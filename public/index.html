@@ -1,27 +1,109 @@
 <!DOCTYPE html>
-<head>
-    <title>Join | CHAT</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/index.js"></script>
-</head>
-<body  class="centered-form">
-     <div class="centered-form__form">
-         <form action="/index2.html">
-            <div class="form-field">
-                <h3>Join a Chat</h3>
-            </div>
-            <div class="form-field">
-              <label>Display Name</label>
-              <input type="text" name="name">
-            </div>
-            <div class="form-field">
-                <label>Room Name</label>
-                <input type="text" name="room">
-              </div>
-              <div class="form-field" id="join">
-              <button>SUBMIT</button>
-              </div>
 
-     </div>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Web Chat</title>
+    <link rel="stylesheet" href="cp1.css">
+    <link rel="stylesheet" href="cp1.css">
+
+
+</head>
+
+<body class="chat">
+    <div class="container app">
+        <div class="row app-one">
+
+            <div class="col-sm-4 side">
+                <div class="side-one">
+                    <!-- Heading -->
+                    <div style="background: #C967A6;" class="row heading">
+                        <div class="col-sm-3 col-xs-3 heading-avatar">
+                            <div class="heading-avatar-icon">
+                                <img src="./Whatsapp Template_files/avatar.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
+                            <i style="color: white;" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+                            <i style="color: white;" class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <!-- Heading End -->
+
+                    <!-- SearchBox -->
+                    <div class="row searchBox">
+                        <div class="col-sm-12 searchBox-inner">
+                            <div class="form-group has-feedback">
+                                <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Box End -->
+                    <!-- sideBar -->
+                    <div class="row sideBar">
+                        <div class="row sideBar-body">
+                            <div class="col-sm-3 col-xs-3 sideBar-avatar">
+                                <div class="avatar-icon">
+                                    <img src="./Whatsapp Template_files/avatar.jpg">
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-9 sideBar-main">
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-8 sideBar-name">
+                                        <span class="name-meta">Ankit Jain
+                  </span>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                                        <span class="time-meta pull-right">18:18
+                  </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- Sidebar End -->
+                </div>
+                <div class="chat__main">
+                    <ol id="m" class="chat__messages"></ol>
+                    <div class="chat__footer">
+                        <form id="message-form">
+                            <input id="user" name="user" type="text" placeholder="Name" />
+                            <input id="text" name="text" type="text" placeholder="Enter text here" autofocus="true" />
+                            <button id="sub">Submit</button>
+                            <button id="gif" onclick="x()">SEND GIF</button>
+                        </form>
+                    </div>
+
+                </div>
+                <script id="message-template" type="text/template">
+                    <li class="message">
+                        <div class="message__title">
+                            <h4>{{from}}</h4>
+                            <span>{{createdAt}}</span></div>
+                        <div class="message__body">
+                            <p id="text2">{{text}}</p>
+                        </div>
+
+                </script>
+
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+                <script src="/socket.io/socket.io.js">
+                </script>
+                <script src="js/index2.js"></script>
+                <script src="js/moment.js"></script>
+                <script src="js/mustache.js"></script>
+                <script src="js/deparam.js"></script>
+                <script src="js/gifshot.js"></script>
+
+
 </body>
+
+</html>
